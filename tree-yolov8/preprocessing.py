@@ -47,7 +47,7 @@ def write_to_file(images_path, labels_path, X):
 
     # loop over the image paths
     for img_path in X:
-        # Get the image name and extension
+        # Get the image name and extension(changes made due to wrong concatenation)
         img_name = os.path.splitext(os.path.basename(img_path))[0]
         img_ext = os.path.splitext(os.path.basename(img_path))[1]
         # read the image
@@ -65,3 +65,24 @@ def write_to_file(images_path, labels_path, X):
 write_to_file("C:/Users/Rafael - Estudo/Documents/Repositories/ProjetoOCR-UniPark/tree-yolov8/datasets/images/train", "C:/Users/Rafael - Estudo/Documents/Repositories/ProjetoOCR-UniPark/tree-yolov8/datasets/labels/train", X_train)
 write_to_file("C:/Users/Rafael - Estudo/Documents/Repositories/ProjetoOCR-UniPark/tree-yolov8/datasets/images/valid", "C:/Users/Rafael - Estudo/Documents/Repositories/ProjetoOCR-UniPark/tree-yolov8/datasets/labels/valid", X_val)
 write_to_file("C:/Users/Rafael - Estudo/Documents/Repositories/ProjetoOCR-UniPark/tree-yolov8/datasets/images/test", "C:/Users/Rafael - Estudo/Documents/Repositories/ProjetoOCR-UniPark/tree-yolov8/datasets/labels/test", X_test)
+"""
+
+###############################
+### Create a YAML file###############
+#################################################################
+
+# Create a dictionary with the paths to the train, valid, and test sets
+data = {
+    "path": "C:/Users/Rafael - Estudo/Documents/Repositories/ProjetoOCR-UniPark/tree-yolov8/datasets", # dataset root dir (you can also use the full path to the `datasets` folder)
+    "train": "images/train", # train images (relative to 'path')
+    "val": "images/valid", # val images (relative to 'path')
+    "test": "images/test", # test images (optional)
+
+    # Classes
+    "names":["Number Plate"]
+}
+
+# write the dictionary to a YAML file
+with open("number-plate.yaml", "w") as f:
+    yaml.dump(data, f)
+"""
